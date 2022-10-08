@@ -1,0 +1,172 @@
+
+    <!-- start page title -->
+<div class="row mb-3">
+    <div class="col-12">
+        <div class="page-title-box">
+
+            <h1 class="page-title text-center text-danger"> {{process_name|capitalize}} 
+                <h4 ><i class="mdi mdi-shield-home"></i>{{data["definition"]}}</h4>
+            </h1>
+        </div>
+    </div>
+</div>
+<!-- end page title -->
+    <div class="row">
+        <div class="col-3">
+            <h4 class="text-muted"><i class="mdi mdi-exit-to-app"></i>Inputs</h4>
+            <div class="row">
+                <div class="col-lg">
+                    <div class="accordion mb-3" id="accordionExample_inputs">
+                        {% for input,datas in data["inputs"].items() %}
+                            <div class="card mb-1">
+                                <div class="card-header" id="headingOne_inputs{{loop.index}}">
+                                    <h5 class="my-0">
+                                        <a class="text-warning" data-toggle="collapse" href="#collapseOne_inputs{{loop.index}}" aria-expanded="true" aria-controls="collapseOne">
+                                            {{ input|capitalize }}
+                                        </a>
+                                    </h2>
+                                </div>
+                            
+                                <div id="collapseOne_inputs{{loop.index}}" class="collapse show" aria-labelledby="headingOne_inputs{{loop.index}}" data-parent="#accordionExample_inputs">
+                                    <div class="card-body">
+                                        
+                                        {% for key,process in datas.items() %}
+                                            <p></p>
+                                             {% if "belong" not in key.split() %}
+                                                    <em class="text-primary" >{{key}} :</em>
+                                                    <ul style="padding-left: 4px;">
+                                                        {% for pros in process %}
+                                                            <li>
+                                                                {{ pros|capitalize }}
+                                                            </li>
+                                                                
+                                                        {% endfor %}
+                                                    </ul>
+                                             {% else %}
+                                                <h6 class="header-title">Belong to :</h6>
+                                                <p>
+                                                    {% for pros in process %}
+                                                        <button type="button" class="btn btn-warning btn-rounded width-sm waves-effect waves-light mt-1">{{ pros|capitalize }}</button>            
+                                                    {% endfor %}
+                                                </p>
+                                             {% endif %}
+                                        {% endfor %}
+                                        <p></p>
+                                        <em  class="text-primary" >Linked objects :</em>
+                                        <ul style="padding-left: 4px;">
+                                            <li>
+                                                Lorem ipsum dolor sit amet  
+                                            </li>
+                                            <li>
+                                                Consectetur adipiscing elit
+                                            </li>
+                                            
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>  
+                        {% endfor %}
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        <div class="col-3">
+            <h4 class="text-muted"><i class="mdi mdi-settings"></i>Tools and techniques</h4>
+            <div class="row">
+                <div class="col-lg">
+                    <div class="accordion mb-3" id="accordionExample_tools_and_techniques">
+                        {% for input,datas in data["tools_and_techniques"].items() %}
+                            <div class="card mb-1">
+                                <div class="card-header" id="headingOne_inputs{{loop.index}}">
+                                    <h5 class="my-0">
+                                        <a class="text-warning" data-toggle="collapse" href="#collapseOne_tools_and_techniques{{loop.index}}" aria-expanded="true" aria-controls="collapseOne">
+                                            {{ input|capitalize }}
+                                        </a>
+                                    </h2>
+                                </div>
+                            
+                                <div id="collapseOne_tools_and_techniques{{loop.index}}" class="collapse show" aria-labelledby="headingOne_tools_and_techniques{{loop.index}}" data-parent="#accordionExample_tools_and_techniques">
+                                    <div class="card-body">
+                                        {% for key,process in datas.items() %}
+                                            <p></p>
+                                             {% if "belong" not in key.split() %}
+                                                    <em class="text-primary" >{{key}} :</em>
+                                                    <ul style="padding-left: 4px;">
+                                                        {% for pros in process %}
+                                                            <li>
+                                                                {{ pros|capitalize }}
+                                                            </li>
+                                                                
+                                                        {% endfor %}
+                                                    </ul>
+                                             {% else %}
+                                                <h6 class="header-title">Belong to :</h6>
+                                                <p>
+                                                    {% for pros in process %}
+                                                        <button type="button" class="btn btn-warning btn-rounded width-sm waves-effect waves-light mt-1">{{ pros|capitalize }}</button>            
+                                                    {% endfor %}
+                                                </p>
+                                             {% endif %}
+                                        {% endfor %}
+                                    </div>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        <div class="col-3">
+            <h4 class="text-muted"><i class="mdi mdi-shield-check"></i>Outputs</h4>
+            <div class="row">
+                <div class="col-lg">
+                    <div class="accordion mb-3" id="accordionExample">
+                        {% for input,datas in data["outputs"].items() %}
+                            <div class="card mb-1">
+                                <div class="card-header" id="headingOne_outputs{{loop.index}}">
+                                    <h5 class="my-0">
+                                        <a class="text-warning" data-toggle="collapse" href="#collapseOne_outputs{{loop.index}}" aria-expanded="true" aria-controls="collapseOne">
+                                            {{ input|capitalize }}
+                                        </a>
+                                    </h2>
+                                </div>
+                            
+                                <div id="collapseOne_outputs{{loop.index}}" class="collapse show" aria-labelledby="headingOne_outputs{{loop.index}}" data-parent="#accordionExample_outputs">
+                                    <div class="card-body">
+                                        {% for key,process in datas.items() %}
+                                            <p></p>
+                                             {% if "belong" not in key.split() %}
+                                                    <em class="text-primary" >{{key}} :</em>
+                                                    <ul style="padding-left: 4px;">
+                                                        {% for pros in process %}
+                                                            <li>
+                                                                {{ pros|capitalize }}
+                                                            </li>
+                                                                
+                                                        {% endfor %}
+                                                    </ul>
+                                             {% else %}
+                                                <h6 class="header-title">Belong to :</h6>
+                                                <p>
+                                                    {% for pros in process %}
+                                                        <button type="button" class="btn btn-warning btn-rounded width-sm waves-effect waves-light mt-1">{{ pros|capitalize }}</button>            
+                                                    {% endfor %}
+                                                </p>
+                                             {% endif %}
+                                        {% endfor %}
+                                    </div>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        <div class="col-3">
+            <h4 class="text-muted"><i class="mdi mdi-information"></i>Informations</h4>
+            
+        </div>
+    </div>

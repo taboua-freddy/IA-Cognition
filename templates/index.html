@@ -1,0 +1,73 @@
+{% extends "base.html" %}
+
+
+{% block body %}
+
+<div id="display-data">
+    
+</div>
+
+    
+{% endblock %}
+
+{% block js %}
+{{ super() }}
+
+ <script type="text/javascript">
+    $(document).ready(function () {
+
+        $(".pross").click(function () {
+            $("#status").fadeIn()
+            $("#preloader").delay(350).fadeIn("slow")
+        });
+
+        $("#display_data_process").on("click", function (e) {
+            e.preventDefault();
+            const url = $("#process_form").attr("action");
+            const data = $('#process_form').serialize()
+            if ($("#process_name").val().length == 0){
+                toastr.warning('You should select something inside the field')
+            }
+            else{
+                ff(url,data)
+            }
+        });
+
+        function ff(url,data){
+            $.ajax({
+                url: url,
+                type: "POST",
+                data: data,
+                dataType: 'HTML',
+                beforeSend: function() {
+                    add_spinner()
+                    toastr.warning('A message will be display at the end of the process')
+            },
+            success: function(data){
+                $("#display-data").html(data)
+                toastr.success('The process is finished !')
+                remove_spinner()
+            },fail:function(){
+                remove_spinner()
+            }
+            });
+            
+        }
+
+        function remove_spinner() { 
+            $("#display_data_process").prop("disabled",false)
+            $("#display_data_process span").removeClass("spinner-border")
+            $("#display_data_process b").text("Submit")
+        }
+
+        function add_spinner() { 
+            $("#display_data_process").prop("disabled",true)
+            $("#display_data_process span").addClass("spinner-border")
+            $("#display_data_process b").text("Loading...")
+        }
+
+    })
+</script>
+
+{% endblock %}
+
